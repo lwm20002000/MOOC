@@ -346,13 +346,14 @@ def run_cppi(risky_r, safe_r=None, m=3, start=1000, floor=0.8, riskfree_rate=0.0
     """
     # Set up the CPPI parameters
     dates = risky_r.index
-    n_steps = len(dates)-1
+    n_steps = len(dates)
     account_value = start
     floor_value = start*floor
     peak = start
     
     if isinstance(risky_r, pd.Series):
-        risky_r = pd.DataFrame(risky_r, columns=["R"])
+        risky_r = pd.DataFrame(risky_r)
+        risky_r.columns=["R"]
 
     if safe_r is None:
         safe_r = pd.DataFrame().reindex_like(risky_r)
