@@ -2,3 +2,4 @@
 */
 !.gitignore
 !edhec_risk_kit.py
+!config.py
